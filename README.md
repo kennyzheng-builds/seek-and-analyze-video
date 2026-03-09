@@ -76,7 +76,15 @@ ChatGPT and Gemini treat video as a one-shot input: you upload one video, ask ab
 claude skill install seek-and-analyze-video.skill
 ```
 
-**Manual installation:**
+**OpenClaw:**
+
+OpenClaw uses the same skill format. Drop the skill folder into your OpenClaw skills directory:
+```bash
+cp -r seek-and-analyze-video ~/.openclaw/skills/
+```
+Or reference the GitHub repo directly in your OpenClaw config. The skill works with any AI model OpenClaw routes through (Claude, GPT, etc.) -- the Python API client is model-agnostic.
+
+**Manual installation (any compatible platform):**
 ```bash
 cp -r seek-and-analyze-video ~/.claude/skills/
 ```
@@ -186,6 +194,20 @@ seek-and-analyze-video/
     └── api_reference.md          # Complete API command reference
 ```
 
+## Platform Compatibility
+
+This skill is designed to work across any agent platform that supports the skill format:
+
+| Platform | Status | Install method |
+|---|---|---|
+| **Claude Code** | Supported | `claude skill install` or copy to `~/.claude/skills/` |
+| **OpenClaw** | Supported | Copy to `~/.openclaw/skills/` or reference via config |
+| **HappyCapy** | Supported | `claude skill install` (Claude Code compatible) |
+
+The skill uses a standard Python script as its API client -- no platform-specific dependencies. Any agent that can read a `SKILL.md` file and execute `python scripts/memories_api.py` commands will work.
+
+**OpenClaw users**: Because OpenClaw routes through multiple AI models and messaging platforms (WhatsApp, Telegram, Discord, etc.), this skill lets you ask about videos from any conversation channel. The Python client is model-agnostic -- it works regardless of whether OpenClaw dispatches to Claude, GPT, or another model.
+
 ## API Commands
 
 21 commands across 6 categories:
@@ -213,7 +235,7 @@ See [memories.ai/pricing](https://memories.ai/pricing) for per-operation costs.
 
 - Python 3.8+ (standard library only -- zero dependencies)
 - Memories.ai API key ([get one free](https://memories.ai/app/service/key))
-- Claude Code, HappyCapy, or any skill-supporting platform
+- Claude Code, OpenClaw, HappyCapy, or any skill-compatible agent platform
 
 ## Tested
 
