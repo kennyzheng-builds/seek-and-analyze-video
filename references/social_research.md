@@ -56,9 +56,16 @@ python scripts/memories_api.py memory_add "Research on <topic>: Key finding 1...
 ```bash
 python scripts/memories_api.py import_creator "<CREATOR_PROFILE_URL>" --count 10
 ```
+Returns multiple video numbers. Collect them all.
 
-**Step 2: Wait and analyze**
-After processing completes, use `chat_personal` to analyze patterns:
+**Step 2: Wait for processing**
+```bash
+python scripts/memories_api.py wait "<VIDEO_NO_1>" --timeout 300
+python scripts/memories_api.py wait "<VIDEO_NO_2>" --timeout 300
+```
+Repeat for each returned video number.
+
+**Step 3: Analyze patterns**
 ```bash
 python scripts/memories_api.py chat_personal "Analyze the content style, topics, and engagement patterns of the recently imported creator videos"
 ```
@@ -69,8 +76,16 @@ python scripts/memories_api.py chat_personal "Analyze the content style, topics,
 ```bash
 python scripts/memories_api.py import_hashtag "<HASHTAG>" --platform TIKTOK --count 15
 ```
+Returns multiple video numbers. Collect them all.
 
-**Step 2: Analyze trends**
+**Step 2: Wait for processing**
+```bash
+python scripts/memories_api.py wait "<VIDEO_NO_1>" --timeout 300
+python scripts/memories_api.py wait "<VIDEO_NO_2>" --timeout 300
+```
+Repeat for each returned video number.
+
+**Step 3: Analyze trends**
 ```bash
 python scripts/memories_api.py chat_personal "What are the common visual elements, hooks, and themes in the videos tagged with <hashtag>?"
 ```

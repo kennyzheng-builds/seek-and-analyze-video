@@ -64,6 +64,29 @@ python scripts/memories_api.py transcript "<VIDEO_NO>" --audio
 python scripts/memories_api.py memory_add "Key insight from video <VIDEO_NO>: ..."
 ```
 
+### Finding Specific Moments (search within a video)
+
+After uploading a video, use `search_audio` to find specific quotes, topics, or moments in the spoken content:
+
+```bash
+python scripts/memories_api.py search_audio "<VIDEO_NO>" "acquisition deal"
+```
+
+Returns matching segments with timestamps. Use this when:
+- User asks "find where they discuss X"
+- User wants exact quotes or timestamps
+- User needs to locate a specific topic in a long video
+
+Combine with `chat_video` for context around the found moment:
+```bash
+python scripts/memories_api.py chat_video "<VIDEO_NO>" "Give me the exact quotes and context around the acquisition deal discussion"
+```
+
+**When to use which:**
+- `search_audio`: Find specific moments/quotes by keyword (fast, targeted)
+- `transcript --audio`: Get full spoken transcript (comprehensive, for notes)
+- `chat_video`: Ask questions with AI interpretation (flexible, conversational)
+
 ## Decision: Quick vs Deep
 
 | Signal | Use Quick (caption_video) | Use Deep (upload + chat) |
